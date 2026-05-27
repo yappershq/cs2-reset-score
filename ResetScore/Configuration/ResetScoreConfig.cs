@@ -42,6 +42,12 @@ internal sealed class ResetScoreConfig : IResetScoreConfig
         _cvAdminPermission = cv.CreateConVar("rs_admin_permission", "@resetscore/admin", "Permission required for !setscore");
         _cvKeepMvp         = cv.CreateConVar("rs_keep_mvp",         false, "Keep MVP stars when resetting (do not zero MVPs)");
         _cvCooldown        = cv.CreateConVar("rs_cooldown",         0, "Seconds between self-resets per player (0=disabled)");
+
+        // Generate/load editable config at sharp/configs/resetscore.cfg (NukoLevelRank style).
+        var logger = bridge.LoggerFactory.CreateLogger("ResetScore.Config");
+        IConVar?[] all = [_cvEnabled, _cvOnlyVip, _cvVipPermission, _cvAdminPermission, _cvKeepMvp, _cvCooldown];
+        ConVarConfigFile.Sync(bridge.SharpPath, "resetscore.cfg", "ResetScore", logger,
+            System.Array.FindAll(all, c => c is not null)!);
     }
 
     public bool   Enabled         => _cvEnabled?.GetBool()         ?? true;
