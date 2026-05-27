@@ -1,0 +1,29 @@
+{
+  "resetscore.reset": {
+    "en-US": " [ResetScore] Your score has been reset."
+  },
+  "resetscore.only_vip": {
+    "en-US": " [ResetScore] This command is for VIPs only."
+  },
+  "resetscore.only_admin": {
+    "en-US": " [ResetScore] You don't have permission to use this command."
+  },
+  "resetscore.cooldown": {
+    "en-US": " [ResetScore] Please wait {0}s before resetting again."
+  },
+  "resetscore.setscore_usage": {
+    "en-US": " [ResetScore] Usage: setscore <target> <kills> <deaths> <assists> <damage> <mvps> <score>"
+  },
+  "resetscore.setscore_done": {
+    "en-US": " [ResetScore] Updated stats for {0}."
+  },
+  "resetscore.no_target": {
+    "en-US": " [ResetScore] No player matching '{0}' found."
+  },
+  "resetscore.setscore_multiple": {
+    "en-US": " [ResetScore] Applied to {0} players matching that name."
+  },
+  "resetscore.unavailable": {
+    "en-US": " [ResetScore] Couldn't reset right now — try again in a moment."
+  }
+}
