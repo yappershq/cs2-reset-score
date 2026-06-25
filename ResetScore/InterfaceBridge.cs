@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Sharp.Modules.AdminManager.Shared;
 using Sharp.Modules.LocalizerManager.Shared;
@@ -64,6 +65,25 @@ internal sealed class InterfaceBridge
             return;
 
         AdminManager = am;
+        RegisterAdminPermissions();
+    }
+
+    private void RegisterAdminPermissions()
+    {
+        if (AdminManager is not { } am)
+            return;
+
+        am.MountAdminManifest("ResetScore", static () => new AdminTableManifest(
+            new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["resetscore"] = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+                {
+                    "@resetscore/vip",
+                    "@resetscore/admin",
+                },
+            },
+            [],
+            []));
     }
 
     /// <summary>
